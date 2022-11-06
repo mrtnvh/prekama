@@ -5,7 +5,7 @@ export default <Partial<Config>>{
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Albert Sans", "sans-serif"],
+        sans: ["Inter", "sans-serif"],
       }
     },
   },

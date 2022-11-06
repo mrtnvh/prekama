@@ -1,14 +1,26 @@
 <template>
   <div class="min-h-screen flex flex-col">
-    <header v-if="pageTitle" class="bg-white border-b-2">
+    <header v-if="pageTitle" class="bg-white shadow-lg">
       <div class="container flex items-center">
-        <h1 class="text-3xl font-bold tracking-tight text-gray-900 py-6">{{ pageTitle }}</h1>
+        <NuxtLink to="/" class="py-6 flex items-center gap-3 text-indigo-500">
+          <svg viewBox="0 0 256 256" class="h-10">
+            <path
+              fill="currentColor"
+              d="M232 56v120a16 16 0 0 1-16 16h-39.4l21.6 27a8 8 0 0 1-6.2 13a7.8 7.8 0 0 1-6.2-3l-29.6-37H99.8l-29.6 37a7.8 7.8 0 0 1-6.2 3a8 8 0 0 1-6.2-13l21.6-27H40a16 16 0 0 1-16-16V56a16 16 0 0 1 16-16h80V24a8 8 0 0 1 16 0v16h80a16 16 0 0 1 16 16Z"
+            />
+          </svg>
+          <div class="uppercase text-xl font-black">PreKaMa</div>
+        </NuxtLink>
       </div>
     </header>
     <main class="flex flex-col flex-grow">
       <NuxtPage />
     </main>
-    <footer></footer>
+    <footer class="flex py-6 items-center justify-center">
+      <div class="text-gray-500 text-sm">
+        <span>© {{ new Date().getFullYear() }} PreKaMa</span>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -34,8 +46,6 @@ useHead({
 </script>
 
 <style>
-
-
 .container {
   @apply mx-auto max-w-7xl  px-4 sm:px-6 lg:px-8;
 }

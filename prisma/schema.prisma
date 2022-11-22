@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator zod {
+  provider         = "prisma-zod-generator"
+  output           = "../models/db"
+  isGenerateSelect = true
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// enum State {
+//   PENDING
+//   RESOLVED
+//   REJECTED
+// }
+
+model Event {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String
+  date      DateTime
+  // state     State    @default(PENDING)
+  Round     Round[]
+}
+
+// enum RoundType {
+//   SINGLE_RIDER
+//   PASS_THE_BATON
+//   FORBIDDEN_WORD
+// }
+
+model Round {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String
+  eventId   String
+  Event     Event    @relation(fields: [eventId], references: [id])
+  // state     State    @default(PENDING)
+  // type     RoundType    @default(SINGLE_RIDER)
+}

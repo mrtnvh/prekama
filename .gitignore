@@ -6,3 +6,6 @@ node_modules
 .output
 .env
 dist
+
+# generated files
+models/db/schemas

@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen flex flex-col">
-    <header v-if="pageTitle" class="bg-white shadow-lg">
+    <header v-if="pageTitle">
       <div class="container flex items-center">
         <NuxtLink to="/" class="py-6 flex items-center gap-3 text-indigo-500">
           <svg viewBox="0 0 256 256" class="h-10">
@@ -16,7 +16,7 @@
     <main class="flex flex-col flex-grow">
       <NuxtPage />
     </main>
-    <footer class="flex py-6 items-center justify-center">
+    <footer v-if="pageTitle" class="flex py-6 items-center justify-center">
       <div class="text-gray-500 text-sm">
         <span>© {{ new Date().getFullYear() }} PreKaMa</span>
       </div>
@@ -46,7 +46,5 @@ useHead({
 </script>
 
 <style>
-.container {
-  @apply mx-auto max-w-7xl  px-4 sm:px-6 lg:px-8;
-}
+
 </style>
